@@ -1,5 +1,3 @@
-
-
 dic = [ 
     {"a": {"score":  0, "rank": [0, 0, 0, 0], "rank-amount": 0, "rank-rate": 0}},
     {"b": {"score":  0, "rank": [0, 0, 0, 0], "rank-amount": 0, "rank-rate": 0}},
@@ -17,29 +15,34 @@ def calRank(score):
     for i in range(0, 4):
         dic[i][name[i]]["score"] = score[i]
 
-    score.sort()
-
+   
+    score.sort(reverse=True)
 
     #score를 통한 랭킹 계산
-    for i in range(0, 4):
-        idx = 3 - i
-        for j in range(0, 4):          
+    
+    for j in range(0, 4):
+        for i in range(0, 4):     
             if score[i] == dic[j][name[j]]["score"]:
-                dic[j][name[j]]["rank"][idx] +=1
+                dic[j][name[j]]["rank"][i] +=1
                 break
 
 
-    # 점수초기화
-    for i in range(0, 4):
-        dic[i][name[i]]["score"] = 0
+    # # 점수초기화
+    # for i in range(0, 4):
+    #     dic[i][name[i]]["score"] = 0
 
 
 
     
+'''
 calRank([3, 13, 2, 1])
 calRank([5, 2, 1, 7])
 calRank([3, 34, 5, 67])
-calRank([7, 3, 2, 4])
+'''
+calRank([1, 1, 2, 4])
+calRank([1, 1, 2, 4])
+
+calRank([4, 2, 1, 4])
 
 # 점수보기
 for i in range(0, 4):
